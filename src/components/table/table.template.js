@@ -7,19 +7,27 @@ function toChar(_, index) {
   return String.fromCharCode(CODES.A + index)
 }
 
-function toColumn(char) {
-  return `<div class="column">${char}</div>`
+function toColumn(char, index) {
+  return `<div class="column" data-type="resizeble" data-col="${index}">
+      ${char}
+      <div class="col-resize" data-resize="col"></div>
+    </div>`
 }
 
-function toCell() {
-  return `<div class="cell" contenteditable=""></div>`
+function toCell(_, index) {
+  return `<div class="cell" contenteditable="" data-col="${index}"></div>`
 }
 
 function createRow(cols, index) {
+  const resizer = index
+  ? `<div class="row-resize" data-resize="row"></div>`
+  : ''
   return `
-  <div class="row">
-    <div class="row-info">${index ? index : ''}</div>
-
+  <div class="row" data-type="resizeble" data-row="row">
+    <div class="row-info">
+    ${index ? index : ''}
+    ${resizer}
+    </div>
     <div class="row-data">${cols}</div>
   </div>
   `
