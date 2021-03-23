@@ -11,5 +11,6 @@
     "arrow-parens": "off",
     "require-jsdoc": "off",
     "operator-linebreak": "off",
+    "linebreak-style": "off"
   }
 }
